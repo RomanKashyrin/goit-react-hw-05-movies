@@ -1,23 +1,21 @@
-import Loader from "./Loader/Loader";
-import { Suspense } from "react";
+import Loader from './Loader/Loader';
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import MovieReviews from "page/Reviews/Reviews";
-import MovieCast from "page/Cast/Cast";
-import AppBar from "./SharedLayout/SharedLayout";
-import Home from "page/Home/Home";
-import Movies from "page/Movies/Movies";
-import MovieDetails from "page/MovieDetails/MovieDetails";
-import Navigation from "./Navigation/Navigation";
+import MovieReviews from 'page/Reviews/Reviews';
+import MovieCast from 'page/Cast/Cast';
+import SharedLayout  from "./SharedLayout/SharedLayout";
+import Home from 'page/Home/Home';
+import Movies from 'page/Movies/Movies';
+import MovieDetails from 'page/MovieDetails/MovieDetails';
+// import Navigation from "./Navigation/Navigation";
 import 'styles.css';
 
 export const App = () => {
   return (
     <div>
       <Suspense fallback={<Loader />}>
-
-        <Navigation />
         <Routes>
-          <Route path="/" element={<AppBar />} >
+          <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/movies/:movieId" element={<MovieDetails />}>
@@ -27,9 +25,7 @@ export const App = () => {
           </Route>
           <Route path="*" element={Home} />
         </Routes>
-
       </Suspense>
-
     </div>
   );
 };
