@@ -1,0 +1,35 @@
+.box {
+    background-color: #dfc86f;
+    ;
+}
+
+.homeTitle {
+    text-align: center;
+    margin: 0;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    list-style: none;
+}
+
+.listItem {
+    background-color: antiquewhite;
+    padding: 20px;
+}
+
+.listItem::hover {
+    transform: scale(1.03);
+    cursor: zoom-in;
+}
+
+.title {
+    color: #000;
+    font-size: 13px;
+    width: 188px;
+    text-align: center;
+}

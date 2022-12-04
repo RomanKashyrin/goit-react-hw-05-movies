@@ -1,0 +1,19 @@
+.navBoox {
+    background-color: #dfc86f;
+    box-shadow: 10px 5px 5px #858585;
+    width: 100%;
+    /* position: absolute; */
+}
+
+.link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 500;
+    color: #fff;
+    font-size: 18px;
+}
+
+.link:hover {
+    color: rgb(255, 219, 135);
+}

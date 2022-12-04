@@ -1,0 +1,44 @@
+.movieContainer {
+    display: flex;
+    align-items: center;
+}
+
+.goBack {
+    background-color: #f4e88b;
+    color: #000;
+    border-radius: 20px;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    position: absolute;
+}
+
+.overview {
+    width: 500px;
+}
+
+.img {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.movieDiscr {
+    margin-left: 30px;
+}
+
+.addinfoTitle {
+    text-align: center;
+}
+
+.addInfoBox {
+    display: flex;
+    justify-content: center;
+}
+
+.addInfoLink {
+    text-decoration: none;
+    color: #000;
+    margin-right: 10px;
+}

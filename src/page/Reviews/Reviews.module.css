@@ -1,0 +1,13 @@
+.list {
+    list-style: none;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.error {
+    text-align: center;
+    font-size: 18px;
+    color: rgb(255, 141, 141);
+}
