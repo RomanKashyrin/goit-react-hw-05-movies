@@ -6,9 +6,11 @@ import { searchMovie } from "Api/movieApi";
 const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
     const [searchParams, setSearchParams] = useSearchParams();
 
     const query = searchParams.get('query') ?? '';
+    const targ = setSearchQuery.get(query.target.value);
     const location = useLocation();
 
 useEffect(() => {
@@ -32,12 +34,13 @@ useEffect(() => {
     const updateQuery = query => {
         const nextParams = query !== '' ? { query } : {};
         setSearchParams(nextParams);
-        console.log(nextParams);
+        // console.log(nextParams);
     };
 
     const handleSubmit = e => {
         e.preventDefault();
-        setMovies('');
+        setSearchParams(targ);
+        // reset();
         updateQuery(query);
     }
 
@@ -48,7 +51,7 @@ useEffect(() => {
                 <form className="SearchForm" onSubmit={handleSubmit}>
                     <input
                         onChange={updateQuery}
-                        value={query}
+                        value={searchQuery}
                         className="SearchForm-input"
                         type="text"
                         autoComplete="off"
