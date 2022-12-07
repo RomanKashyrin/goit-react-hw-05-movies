@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Notiflix from 'notiflix';
 import { searchMovie } from "Api/movieApi";
+import css from './Movies.module.css';
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
@@ -10,15 +11,15 @@ const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const query = searchParams.get('query') ?? '';
-    const targ = setSearchQuery.get(query.target.value);
     const location = useLocation();
+    console.log(query);
 
-useEffect(() => {
-        if (!query) {
+    useEffect(() => {
+        if (query === '') {
             return;
         }
 
-        const fetchMovies = async () => {
+        const getMovies = async () => {
             try {
                 setError(null);
 
@@ -28,29 +29,38 @@ useEffect(() => {
                 setError(e.toJSON());
             }
         };
-        fetchMovies();
+        getMovies();
     }, [query]);
 
     const updateQuery = query => {
-        const nextParams = query !== '' ? { query } : {};
-        setSearchParams(nextParams);
-        // console.log(nextParams);
-    };
+        // const nextParams = query !== '' ? { query } : {};
+        console.log(query);
+        setSearchParams({ query });
+        console.log({ query });
+    }
+
+    const handleInputChange = e => {
+        setSearchQuery(e.target.value.toLowerCase());
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
-        setSearchParams(targ);
-        // reset();
-        updateQuery(query);
+        reset();
+        updateQuery(searchQuery);
+    }
+
+    const reset = () => {
+        setSearchParams('');
+        setError(null);
     }
 
     return (
-        <>
+        <div className={css.box}>
             {error && Notiflix.Notify.warning('Sorry, there are no movies matching your search query. Please try again.')}
             <header className="Searchbar">
                 <form className="SearchForm" onSubmit={handleSubmit}>
                     <input
-                        onChange={updateQuery}
+                        onChange={handleInputChange}
                         value={searchQuery}
                         className="SearchForm-input"
                         type="text"
@@ -65,10 +75,11 @@ useEffect(() => {
                 </form>
             </header>
 
-            {movies.length > 0 && movies.map(({ id, title, poster_path}) => (
-                <ul>
-                    <li key={id}>
-                        <Link
+            <ul className={css.list}>
+                {movies.length > 0 && movies.map(({ id, title, poster_path }) => (
+
+                    <li key={id} className={css.list_item}>
+                        <Link className={css.link}
                             to={`/movies/${id}`} state={{ from: location }}
                         >
                             <img
@@ -79,12 +90,13 @@ useEffect(() => {
                                 }
                                 width="200" height="150"
                                 alt={title} />
-                            <p>{title}</p>
+                            <p className={css.title}>{title}</p>
                         </Link>
                     </li>
-                </ul>
-            ))}
-        </>
+                ))}
+
+            </ul>
+        </div>
     );
 }
 

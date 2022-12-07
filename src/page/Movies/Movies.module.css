@@ -1,0 +1,27 @@
+.box {
+    background-color: #dfc86f;
+    ;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    list-style: none;
+}
+
+.list_item {
+    background-color: antiquewhite;
+    padding: 20px;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.title {
+    color: #000;
+}
